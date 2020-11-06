@@ -1,4 +1,3 @@
-//const elementTimer = document.getElementById("timer");
 const elementTimer = document.getElementById("timer");
 const changeTimer = function () {
 
