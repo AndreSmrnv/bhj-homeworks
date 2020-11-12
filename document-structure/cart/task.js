@@ -28,13 +28,14 @@ for (const btnProductAdd of elementsProductAdd) {
 function cartProductAdd() {
     console.log(`btnProductAddId ${this.parentNode.parentNode.parentNode.dataset.id}`);
     const elementDivProduct = this.parentNode.parentNode.parentNode;
+    const elementProductQuantityValue = elementDivProduct.querySelector('.product__quantity-value');
     const elementsCartProduct = elementCartProducts.querySelectorAll('.cart__product');
     let foundInCart = 0;
     if (elementsCartProduct.length) {
         for (const elementCartProduct of elementsCartProduct) {
             if (elementCartProduct.dataset.id === elementDivProduct.dataset.id) {
                 const elementCartProductCount = elementCartProduct.querySelector('.cart__product-count');
-                const elementProductQuantityValue = elementDivProduct.querySelector('.product__quantity-value');
+
                 elementCartProductCount.textContent = Number(elementCartProductCount.textContent) + Number(elementProductQuantityValue.textContent);
                 foundInCart = 1;
             }
@@ -46,13 +47,15 @@ function cartProductAdd() {
     } else {
         cartNewProductAdd();
     }
+    elementProductQuantityValue.textContent = 0;
+
     function cartNewProductAdd() {
         const elementDivCartProduct = document.createElement('div');
         elementDivCartProduct.classList.add('cart__product');
         elementDivCartProduct.dataset.id = elementDivProduct.dataset.id;
         elementDivCartProduct.appendChild(elementDivProduct.querySelector('img').cloneNode(false));
         elementDivCartProduct.querySelector('img').classList.replace("product__image", "cart__product-image");
-        elementDivCartProduct.appendChild(elementDivProduct.querySelector('.product__quantity-value').cloneNode(true));
+        elementDivCartProduct.appendChild(elementProductQuantityValue.cloneNode(true));
         elementDivCartProduct.querySelector('.product__quantity-value').classList.replace("product__quantity-value", "cart__product-count");
         elementCartProducts.appendChild(elementDivCartProduct);
     }
