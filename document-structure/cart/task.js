@@ -19,7 +19,6 @@ function quantityControlInc() {
     this.parentNode.querySelector('.product__quantity-value').textContent = ++quantityValue;
 }
 
-//product__add
 const elementsProductAdd = document.querySelectorAll('.product__quantity > .product__add');
 
 for (const btnProductAdd of elementsProductAdd) {
