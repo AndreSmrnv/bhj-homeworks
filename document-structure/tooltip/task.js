@@ -17,6 +17,8 @@ function showTooltip(event) {
         elementDivTooltip.classList.add('tooltip', 'tooltip_active');
         elementDivTooltip.innerText = this.title;
         elementDivTooltip.dataset.position = 'right';
+        let coords = this.getBoundingClientRect();
+        elementDivTooltip.style.left = coords.left + "px";
         this.insertAdjacentElement('afterEnd', elementDivTooltip);
     }
 
